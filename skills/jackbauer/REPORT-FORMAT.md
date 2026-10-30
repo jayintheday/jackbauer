@@ -17,7 +17,7 @@
 | **Quiet** | Visible only if someone reads a log or checks a folder. |
 | **Loud** | An error, alert or obvious gap reaches the user. |
 
-Rank findings within each axis by severity, then silence (Silent first), then grade (Confirmed first).
+Rank findings within each axis by severity, then silence (Silent first), then grade (Confirmed first). Number them after ranking (B1 is the top B finding) and use the final numbers in the Top fixes table.
 
 ## Length budget
 

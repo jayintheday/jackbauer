@@ -55,6 +55,8 @@ For small pipelines (one or two steps) run the axes yourself in sequence instead
 
 For every finding a sub-agent rates High or Critical, re-open the cited evidence yourself. Drop it or downgrade it if the quote doesn't say what the finding claims, the file isn't on the run-time path, or a later rule/setting already handles it. Sub-agents report in the same confident tone whether they are right or wrong; this pass is what makes the report trustworthy.
 
+Then **check every grade**. Confirmed means the evidence comes from the run in question; if it rests on an assumption ("the run used these same files"), it is Suspected. A finding whose grade is contradicted by its own caveats or by an unchecked lead gets downgraded.
+
 Then **de-duplicate**: when two axes report the same root cause, keep the full finding under the axis that owns the fix and leave a one-line cross-reference ("see C1") in the other.
 
 ## Phase 4: Debrief
