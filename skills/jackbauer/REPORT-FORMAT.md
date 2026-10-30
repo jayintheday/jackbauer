@@ -19,6 +19,18 @@
 
 Rank findings within each axis by severity, then silence (Silent first), then grade (Confirmed first).
 
+## Length budget
+
+The report is read by someone deciding what to fix, not by an auditor. Aim for under ~150 lines.
+
+- **Verdict:** at most 5 sentences, ending with the one thing to fix first.
+- **Top fixes:** at most 10 rows, each naming the finding IDs it resolves.
+- **Each finding:** at most ~6 lines. Quote only the evidence line that proves it.
+- **Low findings:** one line each, under a "Low" list at the end of the axis.
+- **Same root cause on several axes:** full finding once, under the axis that owns the fix; one-line "see C1" elsewhere.
+- **Unchecked leads:** at most 5, ranked by how much harm they'd do if real.
+- **What's working:** at most 5 bullets.
+
 ## Template
 
 ```markdown
@@ -32,9 +44,9 @@ Rank findings within each axis by severity, then silence (Silent first), then gr
 2. …
 
 ## Top fixes
-| # | Fix | Axis | Severity | Effort |
+| # | Fix | Findings | Severity | Effort |
 |---|---|---|---|---|
-| 1 | … | C | Critical | 15 min |
+| 1 | … | C2, A4 | Critical | 15 min |
 
 ## A. Instruction conflicts
 ### A1. <title> — <Severity> · <Silence> · <Confirmed|Latent|Suspected>

@@ -26,7 +26,7 @@ It reads your configuration **and run history** (logs, transcripts, queue state)
 ln -s ~/Desktop/Testrepo/jackbauer/skills/jackbauer ~/.claude/skills/jackbauer
 ```
 
-Then type `/jackbauer`, or ask "audit my cron agent jobs for silent failures".
+Then type `/jackbauer`. Asking in plain words ("audit my cron agent jobs for silent failures") also works, unless you have a very large number of skills installed: Claude Code then trims skill descriptions from what it loads, so the skill can only be reached by name.
 
 Needs Claude Code (it uses sub-agents and reads files). Works on any stack: Claude Code routines, cron/launchd, n8n, Python scripts, Hermes/OpenClaw and others.
 
