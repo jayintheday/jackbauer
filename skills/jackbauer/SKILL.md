@@ -1,6 +1,6 @@
 ---
 name: jackbauer
-description: Interrogate a second brain, personal OS, scheduled/cron agent job, or multi-step agent pipeline for silent failures — conflicting CLAUDE.md/AGENTS.md rules, weak PDF/CSV/RAG retrieval, restricted tools, context bloat, unalerted errors — then report fixes. Optional token-spend audit. Use when the user says "jackbauer", "audit my workflow/pipeline/agents", or "why does my automation quietly go wrong".
+description: Use BEFORE investigating whenever the user wants to audit, debug or health-check their cron/launchd/scheduled jobs, automations, agent workflows, multi-step pipelines, second brain or personal OS — especially things "quietly going wrong", silent failures, unreliable output, wasted tokens. Maps the pipeline, interrogates it for conflicting CLAUDE.md/AGENTS.md rules, weak PDF/CSV/RAG retrieval, restricted tools, context bloat and unalerted errors, then reports fixes. Also "/jackbauer".
 ---
 
 # Jack Bauer
