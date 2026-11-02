@@ -1,0 +1,80 @@
+{
+  "name": "Digest distribution",
+  "nodes": [
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "parameters": {
+        "path": "meridian-digest",
+        "httpMethod": "POST",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "name": "Format",
+      "type": "n8n-nodes-base.code",
+      "parameters": {
+        "jsCode": "const d = $json.body;\nconst lines = (d.clients || []).map(c => `*${c.name}*: ${c.summary}`);\nreturn [{ json: { text: `${d.headline}\\n\\n${lines.join('\\n')}` } }];"
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "parameters": {
+        "channel": "#partners-digest",
+        "text": "={{$json.text}}"
+      },
+      "credentials": {
+        "slackApi": {
+          "name": "Meridian Slack"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "parameters": {
+        "sendTo": "partners@meridian.example",
+        "subject": "Monday digest",
+        "message": "={{$json.text}}"
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "name": "ops@meridian.example"
+        }
+      },
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format"
+          }
+        ]
+      ]
+    },
+    "Format": {
+      "main": [
+        [
+          {
+            "node": "Slack"
+          },
+          {
+            "node": "Gmail"
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "none",
+    "saveDataSuccessExecution": "none",
+    "errorWorkflow": ""
+  }
+}

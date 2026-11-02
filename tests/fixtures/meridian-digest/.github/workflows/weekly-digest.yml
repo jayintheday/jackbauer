@@ -1,0 +1,45 @@
+name: weekly-digest
+
+on:
+  schedule:
+    # 08:00 London, Mondays
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: pip install pypdf anthropic requests
+
+      - name: Fetch reports
+        run: python scripts/fetch_reports.py
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_CLIENTS_DB: ${{ secrets.NOTION_CLIENTS_DB }}
+
+      - name: Extract text
+        run: python scripts/extract.py
+
+      - name: Summarise
+        continue-on-error: true
+        run: python scripts/summarise.py > digest.json
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Send to n8n
+        run: |
+          curl -s -X POST "$N8N_WEBHOOK" -H 'Content-Type: application/json' --data @digest.json || true
+          echo "Digest sent"
+        env:
+          N8N_WEBHOOK: ${{ secrets.N8N_WEBHOOK }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: digest
+          path: digest.json

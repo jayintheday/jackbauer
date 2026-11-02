@@ -1,0 +1,3 @@
+interface:
+  display_name: "Jack Bauer"
+  short_description: "Audit agent workflows for silent failures"

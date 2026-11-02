@@ -34,9 +34,9 @@ Score each: Found (with correct evidence) / Partly / Missed. Grade check: was Co
 - Report within the length budget (~150 lines), no repeated findings across axes
 
 ## Fixture notes
-- Fixture lives at ~/Desktop/Testrepo/meridian-digest (separate git repo, one commit dated 2026-09-08). Delete any `jackbauer-report-*.md` there before re-running.
-- Known flaws: the pricing CSVs are labelled 2026-W44, so they can't be the 20 Oct inputs; the 3.4% figure is unverifiable. #13 applies only if the repo is public.
+- Source is `tests/fixtures/meridian-digest/`. Run `tests/setup-fixture.sh` to get a fresh copy as its own git repo with one commit dated 2026-09-08, and audit that copy, never the source (it sits next to this key).
+- Known flaws: the pricing CSVs are labelled 2026-W44, so they can't be the 20 Oct inputs; the 3.4% figure is unverifiable. #13 applies only if the repo is public, and is "imminent" only for runs before ~7 Nov 2026; after that, expect it reported as already past the limit.
 
 ## Results
-- 2026-10-30, session "jj": 17/17 found, 0 decoys, 146 lines. One over-confident grade (B5). Report: tests/results/meridian-2026-10-30.md
+- 2026-10-30: 17/17 found, 0 decoys, 146 lines. One over-confident grade (B5). Report: tests/results/meridian-2026-10-30.md
 

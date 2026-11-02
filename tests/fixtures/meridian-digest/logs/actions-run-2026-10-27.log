@@ -1,0 +1,13 @@
+2026-10-27T08:00:37Z ##[group]Run python scripts/fetch_reports.py
+2026-10-27T08:01:49Z fetched 100 clients
+2026-10-27T08:01:49Z ##[group]Run python scripts/extract.py
+2026-10-27T08:01:54Z extracted 19004 chars from Alder & Finch.pdf
+2026-10-27T08:01:55Z extracted 0 chars from Halden Logistics.pdf
+2026-10-27T08:01:57Z extracted 51877 chars from Northgate Utilities.pdf
+2026-10-27T08:01:57Z extracted 8841 chars from Pellow Retail.pdf
+2026-10-27T08:01:58Z extracted 0 chars from Quarry Lane Homes.pdf
+2026-10-27T08:01:58Z ##[group]Run python scripts/summarise.py > digest.json
+2026-10-27T08:02:02Z OK
+2026-10-27T08:02:02Z ##[group]Run curl -s -X POST "$N8N_WEBHOOK" ...
+2026-10-27T08:02:03Z Digest sent
+2026-10-27T08:02:04Z Job succeeded

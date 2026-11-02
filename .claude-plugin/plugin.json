@@ -1,0 +1,14 @@
+{
+  "name": "jackbauer",
+  "version": "0.1.0",
+  "description": "Audits agent workflows, cron/launchd jobs and second-brain pipelines for silent failures: conflicting CLAUDE.md/AGENTS.md rules, lossy PDF/CSV/RAG retrieval, blocked tools, swallowed errors, context bloat and wasted tokens.",
+  "author": {
+    "name": "jayintheday",
+    "url": "https://github.com/jayintheday"
+  },
+  "homepage": "https://github.com/jayintheday/jackbauer",
+  "repository": "https://github.com/jayintheday/jackbauer",
+  "license": "MIT",
+  "keywords": ["audit", "debugging", "automation", "cron", "agents", "silent-failures", "tokens"],
+  "skills": ["./skills/jackbauer"]
+}

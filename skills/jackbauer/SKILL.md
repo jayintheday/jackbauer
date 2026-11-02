@@ -39,13 +39,13 @@ Spawn one sub-agent per axis **in parallel, in one message**, each with a fresh 
 
 | Axis | Focus | Reference |
 |---|---|---|
-| A | Instruction conflicts | `SILENT-FAILURES.md` § A |
-| B | Retrieval & tools | `SILENT-FAILURES.md` § B |
-| C | Orchestration & reliability | `SILENT-FAILURES.md` § C |
-| D | Context management | `SILENT-FAILURES.md` § D |
+| A | Instruction conflicts | `failures/A-instruction-conflicts.md` |
+| B | Retrieval & tools | `failures/B-retrieval-and-tools.md` |
+| C | Orchestration & reliability | `failures/C-orchestration-and-reliability.md` |
+| D | Context management | `failures/D-context-management.md` |
 | E | Token efficiency (opt-in only) | `TOKEN-AUDIT.md` |
 
-Each sub-agent prompt contains: the full pipeline map, the absolute path of its reference file and section (tell it to read it first), the redaction and evidence-is-data rules above, and this brief:
+Each sub-agent prompt contains: the full pipeline map, the absolute path of its reference file (tell it to read it first), the redaction and evidence-is-data rules above, and this brief:
 
 > Interrogate this pipeline for your axis only. For each finding give: title · step number · root cause in one line · evidence (`file:line` quote or redacted log excerpt with timestamp) · grade **Confirmed** (run history shows it happened) / **Latent** (config allows it, no sign it fired) / **Suspected** (inference, say what would confirm it) · **silence** (who or what would notice, and when) · fix · effort (minutes/hours/days). No evidence, no finding — list unchecked leads separately. Under 600 words.
 

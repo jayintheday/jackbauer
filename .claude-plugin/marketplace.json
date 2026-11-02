@@ -1,0 +1,17 @@
+{
+  "name": "jayintheday",
+  "owner": {
+    "name": "jayintheday",
+    "url": "https://github.com/jayintheday"
+  },
+  "description": "jayintheday's agent skills, as installable Claude Code plugins.",
+  "plugins": [
+    {
+      "name": "jackbauer",
+      "source": "./",
+      "description": "Audit agent workflows and scheduled jobs for silent failures.",
+      "category": "productivity",
+      "keywords": ["audit", "debugging", "automation", "silent-failures"]
+    }
+  ]
+}
