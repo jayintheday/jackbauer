@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/rw-banners-jackbauer.webp" alt="/jackbauer: a skill to interrogate and optimise multi-step agent workflows" width="1200">
+</p>
+
 # /jackbauer
 
 **Find what your agent workflows get wrong without telling you.**
