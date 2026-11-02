@@ -8,14 +8,50 @@
 
 A skill for Claude Code that interrogates your second brain, personal OS, cron jobs or multi-step agent pipeline for **silent failures**: wrong or missing output that nobody notices until they rely on it.
 
-- Rules in `CLAUDE.md`, `AGENTS.md`, skills and prompts that quietly contradict each other, or don't load at all when the job runs unattended
-- PDFs, CSVs and RAG lookups that drop data while the model answers fluently anyway
-- Web search or tools blocked in headless runs, so the agent answers from memory
-- Cron/launchd jobs with swallowed errors, no alerts, daily caps, backlogs that keep growing
-- Context bloat, compaction, and sub-agent handoffs that lose instructions
-- **Optional:** where your tokens go and how to spend fewer
-
 It reads your configuration **and run history** (logs, transcripts, queue state) but never runs the workflow. Every finding is backed by evidence and graded *Confirmed*, *Latent* or *Suspected*.
+
+## What it looks for
+
+### 🗒️ Your instructions disagree with each other
+- **Two rules that contradict each other.** For example, "be brief" in one file and "include full detail" in another, so the output changes from run to run.
+- **Rules that don't load when the job runs unattended.** It works when you test it by hand but runs from a different folder on a schedule, so it picks up different instructions or none.
+- **Personal rules leaking into automations.** A rule like "always ask me first" makes a scheduled job stop and wait for an answer nobody will give.
+- **Outdated references.** Instructions that point at files, tools or AI models that no longer exist, so the agent quietly improvises around them.
+- **Two skills that respond to the same request.** Sometimes the wrong one runs.
+
+### 📄 Your data doesn't fully arrive
+- **PDFs the AI can't actually read.** Scanned pages, tables and multi-column layouts come out as nothing or nonsense, and the AI summarises them confidently anyway.
+- **Spreadsheets the AI "reads" instead of calculating.** You get totals and percentages that look right and aren't.
+- **Documents cut off partway through.** Long files get trimmed and the AI answers from the part it saw.
+- **Only the first page of results.** For example, 100 items fetched from Notion when there are 300.
+- **Search that isn't happening.** Web search is blocked in the scheduled run, so the AI answers from memory and sounds just as sure.
+- **Expired logins.** A connection to Google, Notion or Slack expires and the step returns nothing instead of an error.
+
+### ⏰ Your job fails and nobody finds out
+- **Errors that get swallowed.** The script hits a problem, carries on, and reports "success".
+- **No alert when something stops.** If the job doesn't run at all, nothing tells you.
+- **Alerts sent somewhere nobody looks.**
+- **Laptop jobs that don't run while it's asleep**, or all run at once when it wakes up.
+- **Daily limits and growing backlogs.** The job "succeeds" every day while unprocessed work keeps piling up.
+- **Jobs that overlap or run twice**, leaving duplicate notes, emails or rows.
+- **"Done" that nobody checks.** The AI says it finished and nothing confirms the output exists or makes sense.
+- **Hosted schedules that switch themselves off.** For example, GitHub stops scheduled workflows after 60 days with no activity in the repo.
+- **Time zone mistakes**, like a job set to "8am" in UTC that runs at 9am in the UK summer.
+
+### 🧠 The AI loses track
+- **Too much loaded every time.** Huge instruction files and unused tools fill the AI's memory and drown out the rules that matter.
+- **Long runs that forget earlier instructions** once the conversation gets compressed.
+- **Thin hand-offs between agents.** A helper agent gets "summarise this" without the goal or the format.
+- **One AI doing 50 items in one go**, so the later ones get less attention.
+- **Summaries that slowly lose facts.** Each run rewrites the last summary, and details drop out a little at a time.
+
+### 💸 Optional: where your tokens go
+- Which steps, tools and files cost the most.
+- Expensive models doing simple jobs that code could do for free.
+- The same large files read again and again.
+- Concrete cuts, with how much each one saves and what it might cost in quality.
+
+The full catalogue, with how each one is detected and fixed, is in [`skills/jackbauer/failures/`](skills/jackbauer/failures/).
 
 ## Install
 
